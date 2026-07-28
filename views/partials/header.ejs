@@ -1,0 +1,23 @@
+<header class="site-header" data-header>
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="WetomTech home">
+      <img src="/images/wetom-logo.png" alt="Wetom Technology Resources Ltd logo" width="188" height="74" />
+      <span class="brand-domain">wetomtech.com</span>
+    </a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-menu-toggle>
+      <span></span><span></span><span></span>
+      <span class="sr-only">Toggle navigation</span>
+    </button>
+
+    <nav id="primary-nav" class="primary-nav" data-nav aria-label="Primary navigation">
+      <a class="<%= currentPath === '/' ? 'active' : '' %>" href="/">Home</a>
+      <a class="<%= currentPath === '/about' ? 'active' : '' %>" href="/about">About</a>
+      <a class="<%= currentPath === '/services' ? 'active' : '' %>" href="/services">Services</a>
+      <a class="<%= currentPath === '/projects' ? 'active' : '' %>" href="/projects">Projects</a>
+      <a class="<%= currentPath === '/quality-safety' ? 'active' : '' %>" href="/quality-safety">Quality & Safety</a>
+      <a class="<%= currentPath === '/contact' ? 'active' : '' %>" href="/contact">Contact</a>
+      <a class="button button-small" href="/coverage">Check Coverage</a>
+    </nav>
+  </div>
+</header>

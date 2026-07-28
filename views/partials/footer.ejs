@@ -1,0 +1,40 @@
+<footer class="site-footer">
+  <div class="footer-glow"></div>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">WETOM<span>TECH</span></a>
+      <p>
+        Technology, connectivity and engineering solutions built for dependable performance across Nigeria.
+      </p>
+      <a class="footer-profile-link" href="/company-profile">Download company profile</a>
+    </div>
+
+    <div>
+      <h3>Company</h3>
+      <a href="/about">About us</a>
+      <a href="/projects">Projects</a>
+      <a href="/quality-safety">Quality & safety</a>
+      <a href="/careers">Careers</a>
+    </div>
+
+    <div>
+      <h3>Solutions</h3>
+      <% site.services.forEach((service) => { %>
+        <a href="/services#<%= service.slug %>"><%= service.shortTitle %></a>
+      <% }) %>
+    </div>
+
+    <div>
+      <h3>Contact</h3>
+      <p><%= site.address %></p>
+      <a href="tel:<%= formatPhone(site.phones[0]) %>"><%= site.phones[0] %></a>
+      <a href="tel:<%= formatPhone(site.phones[1]) %>"><%= site.phones[1] %></a>
+      <a href="mailto:<%= site.email %>"><%= site.email %></a>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© <%= currentYear %> <%= site.companyName %>. All rights reserved. <%= site.registration %>.</p>
+    <div><a href="/privacy">Privacy</a><a href="/sitemap.xml">Sitemap</a></div>
+  </div>
+</footer>

@@ -1,0 +1,57 @@
+<%- include('../partials/page-hero', {
+  heading: 'Coverage and Site Assessment',
+  intro: 'Submit your location for a fiber availability review, telecom site survey, solar assessment or engineering consultation.'
+}) %>
+
+<section class="section coverage-page-section">
+  <div class="container coverage-page-grid">
+    <div class="coverage-explainer reveal">
+      <p class="section-label">How the assessment works</p>
+      <h2>A clear first step before installation or quotation.</h2>
+      <ol class="coverage-steps">
+        <li><span>01</span><div><strong>Submit the location</strong><p>Provide the exact address, site type and preferred service.</p></div></li>
+        <li><span>02</span><div><strong>Technical review</strong><p>The team evaluates coverage, access, infrastructure and likely site requirements.</p></div></li>
+        <li><span>03</span><div><strong>Site survey where required</strong><p>A field visit may be arranged to verify route, power, civil or equipment conditions.</p></div></li>
+        <li><span>04</span><div><strong>Recommended next step</strong><p>You receive guidance on feasibility, scope and the information needed for a proposal.</p></div></li>
+      </ol>
+      <div class="coverage-note">
+        <strong>Important:</strong> Submission does not automatically confirm service availability. WetomTech will verify the location before confirming deployment.
+      </div>
+    </div>
+
+    <div class="form-panel form-panel-dark reveal" data-delay="100">
+      <%- include('../partials/form-status') %>
+      <form action="/coverage" method="post">
+        <input type="hidden" name="type" value="coverage" />
+        <div class="honeypot" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+        <div class="form-grid">
+          <label>Full name<input type="text" name="fullName" required maxlength="120" /></label>
+          <label>Organisation<input type="text" name="organisation" maxlength="160" /></label>
+          <label>Email address<input type="email" name="email" required maxlength="160" /></label>
+          <label>Phone number<input type="tel" name="phone" required maxlength="40" /></label>
+          <label class="field-full">Service required
+            <select name="service" required>
+              <option value="">Select a service</option>
+              <% site.services.forEach((service) => { %><option value="<%= service.title %>"><%= service.title %></option><% }) %>
+            </select>
+          </label>
+          <label class="field-full">Complete project address<input type="text" name="address" required maxlength="1000" placeholder="Street, district, city and state" /></label>
+          <label class="field-full">Assessment details<textarea name="message" rows="6" required maxlength="3000" placeholder="Describe the property or site, expected number of users, existing equipment, power situation or target project outcome."></textarea></label>
+          <button class="button button-light field-full" type="submit">Request assessment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section assessment-types-section">
+  <div class="container">
+    <div class="section-heading centered reveal"><p class="section-label">Assessment types</p><h2>Different services require different technical checks.</h2></div>
+    <div class="assessment-types-grid">
+      <div class="reveal"><div class="service-icon"><%- include('../partials/icon', { icon: 'fiber' }) %></div><h3>Fiber coverage</h3><p>Route, access, distance, termination point, users and network requirements.</p></div>
+      <div class="reveal" data-delay="70"><div class="service-icon"><%- include('../partials/icon', { icon: 'tower' }) %></div><h3>Telecom site</h3><p>Power, cabinet, civil, equipment, structure and maintenance requirements.</p></div>
+      <div class="reveal" data-delay="140"><div class="service-icon"><%- include('../partials/icon', { icon: 'solar' }) %></div><h3>Solar energy</h3><p>Load profile, roof or ground space, backup need and operating pattern.</p></div>
+      <div class="reveal" data-delay="210"><div class="service-icon"><%- include('../partials/icon', { icon: 'engineering' }) %></div><h3>Engineering work</h3><p>Site conditions, foundation, structure, materials, access and supervision.</p></div>
+    </div>
+  </div>
+</section>

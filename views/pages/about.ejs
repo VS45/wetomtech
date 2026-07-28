@@ -1,0 +1,95 @@
+<%- include('../partials/page-hero', {
+  heading: 'About WetomTech',
+  intro: 'A Nigerian technology and engineering company delivering connectivity, power and infrastructure solutions with professional discipline.'
+}) %>
+
+<section class="section">
+  <div class="container story-grid">
+    <div class="story-copy reveal">
+      <p class="section-label">Our company</p>
+      <h2>Built around practical engineering and client confidence.</h2>
+      <p class="section-lead">
+        <%= site.companyName %> specialises in the installation and maintenance of renewable energy systems, telecommunications infrastructure, fiber internet and other engineering services.
+      </p>
+      <p>
+        The company serves telecommunications, real estate, transportation, utility and energy, banking, education, government, manufacturing and agricultural clients. Its approach is proactive rather than reactive, with attention placed on both technical performance and the long-term usability of each solution.
+      </p>
+      <p>
+        WetomTech operates from Abuja and works with experienced engineers, technicians, project managers, site supervisors, artisans and field personnel to translate client requirements into safe, maintainable systems.
+      </p>
+      <div class="story-registration">
+        <span>Company registration</span>
+        <strong><%= site.registration %></strong>
+      </div>
+    </div>
+    <div class="story-visual reveal" data-delay="100">
+      <img src="/images/tower-vertical.jpg" alt="Telecommunications tower" />
+      <div class="story-visual-card">
+        <span>Head office</span>
+        <strong>Abuja, Nigeria</strong>
+        <p><%= site.address %></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section purpose-section">
+  <div class="container">
+    <div class="section-heading centered reveal">
+      <p class="section-label">Purpose and direction</p>
+      <h2>The principles behind our work.</h2>
+    </div>
+    <div class="purpose-grid">
+      <article class="purpose-card reveal">
+        <span>01</span><h3>Mission</h3><p><%= site.mission %></p>
+      </article>
+      <article class="purpose-card purpose-card-dark reveal" data-delay="80">
+        <span>02</span><h3>Vision</h3><p><%= site.vision %></p>
+      </article>
+      <article class="purpose-card reveal" data-delay="160">
+        <span>03</span><h3>Commitment</h3><p><%= site.commitment %></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section values-section">
+  <div class="container values-grid">
+    <div class="values-copy reveal">
+      <p class="section-label">Our values</p>
+      <h2>A culture designed for dependable delivery.</h2>
+      <p>
+        WetomTech’s values guide how teams collaborate, solve problems, interact with clients and improve their professional capability.
+      </p>
+    </div>
+    <div class="values-list reveal" data-delay="100">
+      <% site.values.forEach((value, index) => { %>
+        <div><span><%= String(index + 1).padStart(2, '0') %></span><strong><%= value %></strong></div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section manpower-section">
+  <div class="container manpower-grid">
+    <div class="manpower-image reveal"><img src="/images/fiber-deployment.jpg" alt="WetomTech technical field deployment" loading="lazy" /></div>
+    <div class="manpower-copy reveal" data-delay="100">
+      <p class="section-label">Manpower resources</p>
+      <h2>The technical roles required to move projects forward.</h2>
+      <div class="manpower-list">
+        <% site.manpower.forEach((role) => { %><span><%= role %></span><% }) %>
+      </div>
+      <p>
+        Training is treated as a continuous requirement. Employee development is linked to job assessment, field practice and the long-term skills needed for safe, efficient operations.
+      </p>
+      <a class="button" href="/careers">Careers and opportunities</a>
+    </div>
+  </div>
+</section>
+
+<section class="section closing-cta">
+  <div class="container closing-cta-inner">
+    <div><p class="section-label light">Work with WetomTech</p><h2>Bring us the technical problem. We will help define the practical route forward.</h2></div>
+    <a class="button button-light" href="/contact">Start a conversation</a>
+  </div>
+</section>

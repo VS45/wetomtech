@@ -1,0 +1,30 @@
+{
+  "name": "wetomtech-premium-mongodb",
+  "version": "1.1.0",
+  "description": "Premium corporate website for Wetom Technology Resources Ltd built with Node.js, Express, EJS, MongoDB and Mongoose.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "db:init": "node scripts/init-db.js",
+    "check": "node --check server.js && node --check app.js && node --check config/database.js && node --check models/Lead.js && node --check services/leadStorage.js && node --check controllers/pageController.js && node --check controllers/leadController.js && node --check public/js/main.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "compression": "^1.7.5",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.0.0",
+    "mongoose": "^8.24.1",
+    "nodemailer": "^6.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

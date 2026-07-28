@@ -1,0 +1,38 @@
+<%- include('../partials/page-hero', {
+  heading: 'Careers and Technical Opportunities',
+  intro: 'WetomTech values engineers, project managers, technicians, supervisors, artisans and field personnel committed to safe, professional work.'
+}) %>
+
+<section class="section careers-section">
+  <div class="container careers-grid">
+    <div class="careers-copy reveal">
+      <p class="section-label">Build practical experience</p>
+      <h2>Join teams working where technology meets the real world.</h2>
+      <p class="section-lead">
+        WetomTech’s projects require technical judgement, teamwork, continuous learning and disciplined field execution.
+      </p>
+      <p>
+        No specific vacancy is published on this demonstration website. Qualified professionals may submit an expression of interest for future consideration.
+      </p>
+      <div class="career-areas">
+        <% site.manpower.forEach((role) => { %><span><%= role %></span><% }) %>
+      </div>
+    </div>
+    <div class="form-panel reveal" data-delay="100">
+      <%- include('../partials/form-status') %>
+      <form action="/careers" method="post">
+        <input type="hidden" name="type" value="career" />
+        <div class="honeypot" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+        <div class="form-grid">
+          <label>Full name<input type="text" name="fullName" required maxlength="120" /></label>
+          <label>Phone number<input type="tel" name="phone" required maxlength="40" /></label>
+          <label class="field-full">Email address<input type="email" name="email" required maxlength="160" /></label>
+          <label class="field-full">Area of interest<input type="text" name="service" required maxlength="120" placeholder="Example: Field Engineer Electrical" /></label>
+          <label class="field-full">Location<input type="text" name="address" maxlength="1000" /></label>
+          <label class="field-full">Professional summary<textarea name="message" rows="7" required maxlength="3000" placeholder="Summarise your experience, qualifications and technical interests. Do not include highly sensitive personal information."></textarea></label>
+          <button class="button field-full" type="submit">Submit expression of interest</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

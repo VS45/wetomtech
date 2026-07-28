@@ -1,0 +1,62 @@
+<%- include('../partials/page-hero', {
+  heading: 'Our Services',
+  intro: 'Integrated connectivity, energy and infrastructure capabilities for organisations that require reliable, maintainable solutions.'
+}) %>
+
+<section class="section service-intro-section">
+  <div class="container service-intro-grid">
+    <div class="reveal">
+      <p class="section-label">One coordinated partner</p>
+      <h2>Technology, power and site infrastructure delivered as one system.</h2>
+    </div>
+    <div class="reveal" data-delay="100">
+      <p class="section-lead">
+        WetomTech supports the full project path: planning, assessment, construction, installation, integration, testing, commissioning, maintenance and monitoring.
+      </p>
+      <p>
+        Solutions are adapted to site conditions, client operations and the expected level of availability rather than forced into a standard template.
+      </p>
+    </div>
+  </div>
+</section>
+
+<% site.services.forEach((service, index) => { %>
+<section class="service-detail <%= index % 2 === 1 ? 'service-detail-alt' : '' %>" id="<%= service.slug %>">
+  <div class="container service-detail-grid">
+    <div class="service-detail-image reveal <%= index % 2 === 1 ? 'order-two' : '' %>">
+      <img src="<%= service.image %>" alt="<%= service.title %>" loading="lazy" />
+      <span><%= String(index + 1).padStart(2, '0') %></span>
+    </div>
+    <div class="service-detail-copy reveal" data-delay="100">
+      <div class="service-icon large"><%- include('../partials/icon', { icon: service.icon }) %></div>
+      <h2><%= service.title %></h2>
+      <p class="section-lead"><%= service.summary %></p>
+      <ul class="check-list">
+        <% service.features.forEach((feature) => { %><li><span>✓</span><%= feature %></li><% }) %>
+      </ul>
+      <a class="button" href="/contact?service=<%= encodeURIComponent(service.title) %>">Request this service</a>
+    </div>
+  </div>
+</section>
+<% }) %>
+
+<section class="section industries-section">
+  <div class="container">
+    <div class="section-heading split-heading reveal">
+      <div><p class="section-label">Sector experience</p><h2>Solutions adapted to different operating environments.</h2></div>
+      <p>WetomTech works across public and private sector environments where uptime, safety, documentation and maintainability matter.</p>
+    </div>
+    <div class="industry-grid">
+      <% site.sectors.forEach((sector, index) => { %>
+        <div class="industry-item reveal" data-delay="<%= index * 50 %>"><span><%= String(index + 1).padStart(2, '0') %></span><strong><%= sector %></strong></div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section closing-cta">
+  <div class="container closing-cta-inner">
+    <div><p class="section-label light">Need a custom solution?</p><h2>Request a technical assessment for your organisation or project site.</h2></div>
+    <a class="button button-light" href="/coverage">Request assessment</a>
+  </div>
+</section>
