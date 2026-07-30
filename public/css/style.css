@@ -2456,29 +2456,63 @@ textarea:focus {
   :root { --header-height: 74px; }
   .topbar-location { display: none; }
   .topbar-inner { justify-content: center; }
-  .menu-toggle { display: block; }
+
+  /* Prevent the blurred sticky header from becoming the containing block
+     for the fixed mobile navigation in some browsers. */
+  .site-header {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .menu-toggle {
+    position: relative;
+    z-index: 130;
+    display: block;
+  }
+
   .primary-nav {
     position: fixed;
     z-index: 120;
     top: calc(40px + var(--header-height));
     right: 0;
-    bottom: 0;
-    width: min(390px, 90vw);
+    bottom: auto;
+    width: min(390px, 92vw);
+    height: calc(100vh - 40px - var(--header-height));
+    height: calc(100dvh - 40px - var(--header-height));
     display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: 24px;
+    padding: 16px 24px 32px;
+    overflow-x: hidden;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     background: var(--white);
     box-shadow: -20px 20px 55px rgba(4, 27, 61, 0.15);
     transform: translateX(105%);
     transition: transform 300ms ease;
   }
+
   .primary-nav.open { transform: translateX(0); }
-  .primary-nav > a:not(.button) { padding: 16px 4px; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+
+  .primary-nav > a:not(.button) {
+    display: flex;
+    flex: 0 0 auto;
+    min-height: 56px;
+    align-items: center;
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.9rem;
+  }
+
   .primary-nav > a:not(.button)::after { display: none; }
-  .primary-nav .button { margin-top: 22px; }
+
+  .primary-nav .button {
+    flex: 0 0 auto;
+    width: 100%;
+    margin-top: 22px;
+  }
   .menu-toggle[aria-expanded="true"] > span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .menu-toggle[aria-expanded="true"] > span:nth-child(2) { opacity: 0; }
   .menu-toggle[aria-expanded="true"] > span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -2538,7 +2572,12 @@ textarea:focus {
 @media (max-width: 720px) {
   .container { width: min(calc(100% - 28px), var(--container)); }
   .topbar { display: none; }
-  .primary-nav { top: var(--header-height); }
+  .primary-nav {
+    top: var(--header-height);
+    width: min(390px, 100vw);
+    height: calc(100vh - var(--header-height));
+    height: calc(100dvh - var(--header-height));
+  }
   .brand img { width: 150px; height: 48px; }
   .brand-domain { margin-left: 44px; }
 

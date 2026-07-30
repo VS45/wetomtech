@@ -4,7 +4,7 @@ module.exports = {
   domain: 'wetomtech.com',
   registration: 'RC 1646366',
   phones: ['07016542860', '08062370242'],
-  email: 'wetomtech@yahoo.com',
+  email: 'info@wetomtech.com',
   address: 'Extension B_31, Efab Mall, Area 11, Garki, Abuja, Nigeria',
   whatsapp: '2347016542860',
   mission:

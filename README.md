@@ -151,7 +151,7 @@ SMTP_SECURE=false
 SMTP_USER=your_user
 SMTP_PASS=your_password
 MAIL_FROM="WetomTech Website <no-reply@wetomtech.com>"
-MAIL_TO=wetomtech@yahoo.com
+MAIL_TO=info@wetomtech.com
 ```
 
 Form submissions are still stored when SMTP is not configured.

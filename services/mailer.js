@@ -24,7 +24,7 @@ async function notifyTeam(lead) {
 
   await transporter.sendMail({
     from: process.env.MAIL_FROM || 'WetomTech Website <no-reply@wetomtech.com>',
-    to: process.env.MAIL_TO || 'wetomtech@yahoo.com',
+    to: process.env.MAIL_TO || 'info@wetomtech.com',
     subject: `New WetomTech ${lead.type} enquiry from ${lead.fullName}`,
     html: `<h2>New website enquiry</h2><table style="border-collapse:collapse">${rows}</table>`
   });
