@@ -16,6 +16,11 @@ exports.home = renderPage('home', {
   description:
     'Wetom Technology Resources Ltd delivers fiber internet deployment, telecom infrastructure, renewable energy and engineering site-build services in Nigeria.'
 });
+exports.wetomnet = renderPage('wetomnet', {
+  title: 'WetomNet - Your Fiber Internet Provider',
+  description:
+    'Experience high-speed fiber internet with WetomNet, delivering reliable connectivity across Nigeria.'
+});
 
 exports.about = renderPage('about', {
   title: 'About Wetom Technology Resources Ltd',

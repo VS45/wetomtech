@@ -11,6 +11,7 @@ router.get('/projects', pageController.projects);
 router.get('/quality-safety', pageController.qualitySafety);
 router.get('/coverage', pageController.coverage);
 router.get('/contact', pageController.contact);
+router.get('/wetomnet', pageController.wetomnet);
 router.get('/careers', pageController.careers);
 router.get('/privacy', pageController.privacy);
 router.get('/company-profile', pageController.downloadProfile);
