@@ -2,11 +2,14 @@ module.exports = {
   companyName: 'Wetom Technology Resources Ltd',
   shortName: 'WetomTech',
   domain: 'wetomtech.com',
-  registration: 'RC 1646366',
-  phones: ['07016542860', '08062370242'],
+  registration: `5,Shitta Bey
+Street Arowojobe, Estate, 
+Mende,Maryland.
+Lagos.`,
+  phones: ['07086124377', '08062370242'],
   email: 'info@wetomtech.com',
-  address: 'Extension B_31, Efab Mall, Area 11, Garki, Abuja, Nigeria',
-  whatsapp: '2347016542860',
+  address: `Block 2, Flat 1 God's man Estate Behind, primary health care, hospital. Old Court Road, Karu. Abuja. `,
+  whatsapp: '+2347086124377',
   mission:
     'To help customers build reliable, secure and manageable solutions that establish a foundation for meeting their objectives.',
   vision:
