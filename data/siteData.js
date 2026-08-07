@@ -33,69 +33,95 @@ Lagos.`,
     'Education and Government',
     'Manufacturing and Agriculture'
   ],
-  services: [
+  services:[
     {
-      slug: 'fiber-internet',
-      title: 'Fiber Internet & Deployment',
-      shortTitle: 'Fiber Internet',
-      icon: 'fiber',
-      image: '/images/fiber-deployment.jpg',
-      summary:
-        'High-speed fiber internet deployment designed to deliver fast, reliable and secure connectivity for homes, businesses and institutions.',
-      features: [
-        'Fiber route planning and deployment',
-        'Last-mile installation',
-        'Structured cabling and termination',
-        'Network testing and commissioning',
-        'Maintenance and technical support'
+      "slug": "fiber-internet",
+      "title": "Fiber Internet & Deployment",
+      "shortTitle": "Fiber Internet",
+      "icon": "fiber",
+      "image": "/images/fiber-deployment.jpg",
+      "summary": "High-speed fiber internet deployment designed to deliver fast, reliable and secure connectivity for homes, businesses and institutions.",
+      "features": [
+        "Fiber route planning and deployment",
+        "Last-mile installation",
+        "Structured cabling and termination",
+        "Network testing and commissioning",
+        "Maintenance and technical support"
       ]
     },
     {
-      slug: 'telecom-infrastructure',
-      title: 'Telecom Infrastructure',
-      shortTitle: 'Telecom Infrastructure',
-      icon: 'tower',
-      image: '/images/telecom-cabinet.jpg',
-      summary:
-        'End-to-end infrastructure services for telecom operators, tower companies, organisations and government agencies.',
-      features: [
-        'Site build and civil works',
-        'Equipment installation and integration',
-        'LIB and rectifier cabinet installation',
-        'Hybrid backup power systems',
-        'Preventive and corrective maintenance'
+      "slug": "telecom-infrastructure",
+      "title": "Telecom Infrastructure",
+      "shortTitle": "Telecom Infrastructure",
+      "icon": "tower",
+      "image": "/images/telecom-cabinet.jpg",
+      "summary": "End-to-end infrastructure services for telecom operators, tower companies, organisations and government agencies.",
+      "features": [
+        "Site build and civil works",
+        "Equipment installation and integration",
+        "LIB and rectifier cabinet installation",
+        "Hybrid backup power systems",
+        "Preventive and corrective maintenance"
       ]
     },
     {
-      slug: 'renewable-energy',
-      title: 'Renewable Energy Solutions',
-      shortTitle: 'Renewable Energy',
-      icon: 'solar',
-      image: '/images/solar-panels.jpg',
-      summary:
-        'Reliable solar and hybrid energy systems designed around each client’s operational needs and long-term performance goals.',
-      features: [
-        'Solar home and office systems',
-        'Telecom solar power systems',
-        'Hybrid backup power',
-        'Solar farm design and installation',
-        'Energy audit and maintenance'
+      "slug": "renewable-energy",
+      "title": "Renewable Energy Solutions",
+      "shortTitle": "Renewable Energy",
+      "icon": "solar",
+      "image": "/images/solar-panels.jpg",
+      "summary": "Reliable solar and hybrid energy systems designed around each client's operational needs and long-term performance goals.",
+      "features": [
+        "Solar home and office systems",
+        "Telecom solar power systems",
+        "Hybrid backup power",
+        "Solar farm design and installation",
+        "Energy audit and maintenance"
       ]
     },
     {
-      slug: 'engineering-site-build',
-      title: 'Engineering, Civil Works & Site Build',
-      shortTitle: 'Engineering & Site Build',
-      icon: 'engineering',
-      image: '/images/site-construction.jpg',
-      summary:
-        'Professional civil, electrical and construction services delivered by field engineers, technicians, artisans and project managers.',
-      features: [
-        'Foundation and structural works',
-        'Tower and equipment base preparation',
-        'Panel and support structure installation',
-        'Construction management',
-        'Quality control and site supervision'
+      "slug": "engineering-site-build",
+      "title": "Engineering, Civil Works & Site Build",
+      "shortTitle": "Engineering & Site Build",
+      "icon": "engineering",
+      "image": "/images/site-construction.jpg",
+      "summary": "Professional civil, electrical and construction services delivered by field engineers, technicians, artisans and project managers.",
+      "features": [
+        "Foundation and structural works",
+        "Tower and equipment base preparation",
+        "Panel and support structure installation",
+        "Construction management",
+        "Quality control and site supervision"
+      ]
+    },
+    {
+      "slug": "telecom-deployment-upgrade",
+      "title": "Telecom Deployment & Upgrade",
+      "shortTitle": "Telecom Deployment",
+      "icon": "deployment",
+      "image": "/images/telecom-deployment.jpg",
+      "summary": "Comprehensive deployment and upgrade services for telecom networks, ensuring seamless integration of new technologies and infrastructure enhancements.",
+      "features": [
+        "Network expansion and capacity upgrades",
+        "Equipment replacement and modernization",
+        "Site survey and planning",
+        "Installation and integration",
+        "Performance optimization"
+      ]
+    },
+    {
+      "slug": "site-passive-active-maintenance",
+      "title": "Site Passive & Active Maintenance",
+      "shortTitle": "Site Maintenance",
+      "icon": "maintenance",
+      "image": "/images/site-maintenance.jpg",
+      "summary": "Integrated maintenance services covering both passive and active site components to ensure maximum network uptime and operational efficiency.",
+      "features": [
+        "Passive infrastructure maintenance",
+        "Active equipment monitoring and servicing",
+        "Preventive and corrective maintenance",
+        "Site inspections and audits",
+        "24/7 technical support and rapid response"
       ]
     }
   ],
