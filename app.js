@@ -63,11 +63,13 @@ app.use((req, res, next) => {
   res.locals.currentPath = req.path;
   res.locals.baseUrl = process.env.BASE_URL || `${req.protocol}://${req.get('host')}`;
   res.locals.formStatus = req.query.status || null;
+  res.locals.canonicalPath =null;
   next();
 });
 
 app.use(['/contact', '/coverage', '/quote'], leadLimiter);
 app.use('/', webRoutes);
+app.use('/payments', require('./routes/paymentRoutes'));
 
 app.use((req, res) => {
   res.status(404).render('pages/404', {

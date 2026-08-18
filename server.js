@@ -1,17 +1,21 @@
 require('dotenv').config();
 
+const mongoose = require('mongoose');
 const app = require('./app');
-const { initialiseDatabase, closeDatabase } = require('./config/database');
 
 const PORT = Number(process.env.PORT) || 9000;
 let server;
 
 async function startServer() {
-  await initialiseDatabase();
 
-  server = app.listen(PORT, () => {
-    console.log(`WetomTech website running at http://localhost:${PORT}`);
-  });
+  mongoose.connect(process.env.MONGODB_URI).then(() => {
+    server = app.listen(PORT, () => {
+      console.log(`WetomTech website running at http://localhost:${PORT}`);
+    });
+  }).catch((error) => {
+    console.error('Unable to connect to MongoDB:', error);
+    process.exit(1);
+  })
 }
 
 async function shutdown(signal) {
@@ -30,6 +34,7 @@ process.on('SIGTERM', () => shutdown('SIGTERM'));
 
 startServer().catch(async (error) => {
   console.error('Unable to start WetomTech website:', error);
-  await closeDatabase().catch(() => {});
   process.exit(1);
 });
+
+
