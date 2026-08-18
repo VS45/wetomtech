@@ -25,7 +25,7 @@ async function shutdown(signal) {
     await new Promise((resolve) => server.close(resolve));
   }
 
-  await closeDatabase();
+  await mongoose.disconnect();
   process.exit(0);
 }
 

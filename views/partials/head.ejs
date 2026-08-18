@@ -5,13 +5,21 @@
   <meta name="description" content="<%= description %>" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="<%= baseUrl %><%= canonicalPath || currentPath %>" />
+
   <meta property="og:type" content="website" />
   <meta property="og:title" content="<%= title %> | <%= site.shortName %>" />
   <meta property="og:description" content="<%= description %>" />
   <meta property="og:url" content="<%= baseUrl %><%= canonicalPath || currentPath %>" />
   <meta property="og:image" content="<%= baseUrl %>/images/hero-tower.jpg" />
+
   <title><%= title %> | <%= site.shortName %></title>
   <link rel="icon" type="image/png" href="/images/wetom-logo.png" />
+
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="/css/wetomnet.css"/>
+
+  <!-- Flutterwave Checkout Script -->
+  <script src="https://checkout.flutterwave.com/v3.js"></script>
+
+
 </head>

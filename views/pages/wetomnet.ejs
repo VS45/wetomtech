@@ -1,3 +1,5 @@
+
+
 <section class="page-hero wetomnet-hero">
   <div class="page-hero-pattern"></div>
   <div class="container wetomnet-hero-grid">
@@ -147,7 +149,7 @@
       <p class="section-label light">Secure online payment</p>
       <h2>Subscribe and continue to Flutterwave checkout.</h2>
       <p>
-        Enter your details below. You will be redirected to Flutterwave's secure hosted payment page to complete your ₦20,000 monthly subscription payment.
+        Enter your details below. Complete your ₦20,000 monthly subscription payment using Flutterwave's inline modal.
       </p>
       <div class="wetomnet-payment-trust">
         <div><strong>₦20,000</strong><span>Monthly plan</span></div>
@@ -156,41 +158,42 @@
       </div>
     </div>
 
-    <form class="wetomnet-payment-form reveal" data-delay="100" action="/payments/flutterwave/initialize" method="post">
+    <!-- Payment form updated to trigger inline Flutterwave checkout -->
+    <form class="wetomnet-payment-form reveal" id="flutterwavePaymentForm" data-delay="100">
       <input type="hidden" name="plan" value="wetomnet-unlimited-20k" />
       <div class="honeypot" aria-hidden="true">
-        <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+        <label>Website<input type="text" name="website" id="website" tabindex="-1" autocomplete="off" /></label>
       </div>
 
       <label>
         Full name
-        <input type="text" name="fullName" required maxlength="120" autocomplete="name" placeholder="Enter your full name" />
+        <input type="text" id="fullName" name="fullName" required maxlength="120" autocomplete="name" placeholder="Enter your full name" />
       </label>
 
       <label>
         Email address
-        <input type="email" name="email" required maxlength="160" autocomplete="email" placeholder="you@example.com" />
+        <input type="email" id="email" name="email" required maxlength="160" autocomplete="email" placeholder="you@example.com" />
       </label>
 
       <label>
         Phone number
-        <input type="tel" name="phone" required maxlength="20" autocomplete="tel" placeholder="0800 000 0000" />
+        <input type="tel" id="phone" name="phone" required maxlength="20" autocomplete="tel" placeholder="0800 000 0000" />
       </label>
 
       <label>
         Service address
-        <input type="text" name="address" required maxlength="500" autocomplete="street-address" placeholder="Enter the installation address" />
+        <input type="text" id="address" name="address" required maxlength="500" autocomplete="street-address" placeholder="Enter the installation address" />
       </label>
 
       <label class="wetomnet-payment-consent">
-        <input type="checkbox" name="termsAccepted" value="yes" required />
+        <input type="checkbox" id="termsAccepted" name="termsAccepted" value="yes" required />
         <span>I confirm that my location is subject to coverage and installation assessment.</span>
       </label>
 
       <button class="button button-light wetomnet-pay-button" type="submit">
         Pay ₦20,000 securely with Flutterwave <span>→</span>
       </button>
-      <small>Your payment is processed on Flutterwave's hosted checkout. WetomTech does not collect your card or wallet PIN on this page.</small>
+      <small>Your payment is processed securely via Flutterwave. WetomTech does not collect your card or wallet PIN on this page.</small>
     </form>
   </div>
 </section>
@@ -219,8 +222,93 @@
       </article>
       <article class="faq-item">
         <button type="button" aria-expanded="false"><span>How is payment completed?</span><i></i></button>
-        <div class="faq-answer"><p>After submitting your details, the website creates a Flutterwave session and redirects you to Flutterwave's secure hosted checkout page to complete payment.</p></div>
+        <div class="faq-answer"><p>After submitting your details, the inline payment modal opens dynamically for completing your payment.</p></div>
       </article>
     </div>
   </div>
 </section>
+
+<!-- Inline Payment Handler Script -->
+<!-- Inline Payment Handler Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const paymentForm = document.getElementById("flutterwavePaymentForm");
+  
+  if (paymentForm) {
+    paymentForm.addEventListener("submit", makePayment);
+  }
+});
+function makePayment(e) {
+  e.preventDefault();
+
+  // Basic anti-bot honeypot check
+  if (document.getElementById("website").value !== "") return;
+
+  const submitBtn = e.target.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Opening payment gateway...";
+
+  const fullName = document.getElementById("fullName").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+
+  // Generate dynamic, unique transaction reference
+  const txRef = "WNET-" + Date.now() + "-" + Math.floor(Math.random() * 1000);
+
+  FlutterwaveCheckout({
+    public_key: "FLWPUBK-135145a53aa6d21c3b08c61793d2da85-X", // Replace with your actual Flutterwave Public Key
+    tx_ref: txRef,
+    amount: 20000,
+    currency: "NGN",
+    payment_options: "card,banktransfer,ussd",
+    customer: {
+      email: email,
+      phone_number: phone,
+      name: fullName,
+    },
+    meta: {
+      service_address: address,
+      plan: "wetomnet-unlimited-20k"
+    },
+    customizations: {
+      title: "WetomNet Internet Subscription",
+      description: "Payment for WetomNet ₦20,000 Unlimited Monthly Plan",
+      logo: "https://wetomtech.com/images/wetom-logo.png" // MUST be a full absolute URL
+    },
+    callback: function (data) {
+      // Send transaction payload to server for backend verification
+      fetch("/payments/flutterwave/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          transaction_id: data.transaction_id,
+          tx_ref: data.tx_ref,
+          status: data.status
+        })
+      })
+      .then(res => res.json())
+      .then(resData => {
+        if (resData.success) {
+          window.location.href = "/payments/success";
+        } else {
+          alert("Payment verification failed. Please contact support.");
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Pay ₦20,000 securely with Flutterwave <span>→</span>';
+        }
+      })
+      .catch(err => {
+        console.error("Verification error:", err);
+        alert("An error occurred verifying your payment.");
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Pay ₦20,000 securely with Flutterwave <span>→</span>';
+      });
+    },
+    onclose: function() {
+      // Re-enable button if user cancels or closes modal without completing payment
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Pay ₦20,000 securely with Flutterwave <span>→</span>';
+    }
+  });
+}
+</script>

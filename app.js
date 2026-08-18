@@ -17,25 +17,51 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('layout', 'layouts/main');
 
 app.use(expressLayouts);
+
+// Updated Helmet CSP to allow Flutterwave
 app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'"],
-        styleSrc: ["'self'", "'unsafe-inline'"],
-        imgSrc: ["'self'", 'data:'],
-        connectSrc: ["'self'"],
-        fontSrc: ["'self'", 'data:'],
+        scriptSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          "https://checkout.flutterwave.com",
+          "https://*.flutterwave.com"
+        ],
+        scriptSrcElem: [
+          "'self'",
+          "'unsafe-inline'",
+          "https://checkout.flutterwave.com",
+          "https://*.flutterwave.com"
+        ],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        fontSrc: ["'self'", 'data:', "https://fonts.gstatic.com"],
+        imgSrc: ["'self'", 'data:', "https:"],
+        frameSrc: [
+          "'self'", 
+          "https://checkout.flutterwave.com", 
+          "https://checkout-v3.flutterwave.com", 
+          "https://*.flutterwave.com"
+        ],
+        connectSrc: [
+          "'self'", 
+          "https://api.flutterwave.com", 
+          "https://*.flutterwave.com", 
+          "https://api.ravepay.co", 
+          "https://*.ravepay.co"
+        ],
         formAction: ["'self'"],
         frameAncestors: ["'none'"],
         objectSrc: ["'none'"],
         baseUri: ["'self'"]
       }
     },
-    crossOriginResourcePolicy: { policy: 'same-origin' }
+    crossOriginResourcePolicy: { policy: 'cross-origin' }
   })
 );
+
 app.use(compression());
 app.use(express.urlencoded({ extended: false, limit: '100kb' }));
 app.use(express.json({ limit: '100kb' }));
@@ -63,7 +89,7 @@ app.use((req, res, next) => {
   res.locals.currentPath = req.path;
   res.locals.baseUrl = process.env.BASE_URL || `${req.protocol}://${req.get('host')}`;
   res.locals.formStatus = req.query.status || null;
-  res.locals.canonicalPath =null;
+  res.locals.canonicalPath = null;
   next();
 });
 
