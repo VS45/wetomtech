@@ -8,7 +8,7 @@ Mende,Maryland.
 Lagos.`,
   phones: ['07086124377', '08062370242'],
   email: 'info@wetomtech.com',
-  address: `Block 2, Flat 1 God's man Estate Behind, primary health care, hospital. Old Court Road, Karu. Abuja. `,
+  address: `G 13_Shopping complex inside, Karu park, opposite, Karu police station. `,
   whatsapp: '+2347086124377',
   mission:
     'To help customers build reliable, secure and manageable solutions that establish a foundation for meeting their objectives.',
